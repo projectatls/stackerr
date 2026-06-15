@@ -2,44 +2,47 @@
 import { useState } from 'react';
 
 const DATASET = [
-  { id: 1, name: "Make.com Automation Suite", category: "Automation", curator: "WorkflowMaster", views: "14.2k clicks", status: "TRENDING", bgGradient: "from-indigo-600 via-purple-700 to-pink-500", featured: true },
-  { id: 2, name: "v0.dev Frontend Engine", category: "Development", curator: "VercelDev", views: "38.5k clicks", status: "HOT", bgGradient: "from-neutral-900 via-neutral-800 to-zinc-700", featured: false },
-  { id: 3, name: "Clay.com Data Enrichment", category: "Lead Gen", curator: "GrowthHacker", views: "9.1k clicks", status: "POPULAR", bgGradient: "from-emerald-600 via-teal-700 to-cyan-500", featured: true },
-  { id: 4, name: "Supabase Relational Postgres", category: "Database", curator: "DB_Architect", views: "22.4k clicks", status: "STABLE", bgGradient: "from-cyan-900 via-blue-950 to-slate-900", featured: false },
-  { id: 5, name: "Cursor AI Programmatic IDE", category: "Development", curator: "CodeAgent", views: "51.3k clicks", status: "META", bgGradient: "from-amber-600 via-orange-700 to-red-600", featured: false },
-  { id: 6, name: "Phantombuster Cloud Agents", category: "Lead Gen", curator: "PhantomScrape", views: "11.1k clicks", status: "ACTIVE", bgGradient: "from-fuchsia-600 via-pink-700 to-rose-600", featured: false },
+  { id: 1, title: "I will deploy advanced Make.com automated workflows for outbound nodes", category: "Automation", curator: "WorkflowMaster", rating: "5.0", reviews: 48, price: "Free Trial", badge: "Vetted Pro", imgGradient: "from-blue-600 to-indigo-900", featured: true },
+  { id: 2, title: "I will generate pristine React and Tailwind code modules instantly using v0", category: "Development", curator: "VercelDev", rating: "4.9", reviews: 132, price: "Freemium", badge: "Top Rated", imgGradient: "from-purple-900 to-neutral-900", featured: false },
+  { id: 3, title: "I will enrich outbound pipeline targets using multi-provider Clay matrices", category: "Lead Gen", curator: "GrowthHacker", rating: "5.0", reviews: 29, price: "$29/mo", badge: "Vetted Pro", imgGradient: "from-emerald-800 to-teal-950", featured: true },
+  { id: 4, title: "I will configure low-latency postgres clusters with automated Supabase sync", category: "Database", curator: "DB_Architect", rating: "4.8", reviews: 64, price: "Free Tier", badge: "Level 2", imgGradient: "from-cyan-950 to-slate-900", featured: false },
+  { id: 5, title: "I will engineer complex codebases inside context-aware Cursor AI spaces", category: "Development", curator: "CodeAgent", rating: "5.0", reviews: 215, price: "$20/mo", badge: "Top Rated", imgGradient: "from-orange-700 to-red-950", featured: false },
+  { id: 6, title: "I will scrape custom target demographics using automated Phantom agents", category: "Lead Gen", curator: "PhantomScrape", rating: "4.7", reviews: 19, price: "Free Trial", badge: "Level 1", imgGradient: "from-fuchsia-900 to-pink-950", featured: false },
 ];
 
-const CATEGORIES = ["All Items", "Automation", "Development", "Lead Gen", "Database"];
+const CATEGORIES = ["All Services", "Automation", "Development", "Lead Gen", "Database"];
 
 export default function Home() {
   const [search, setSearch] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All Items');
+  const [activeCategory, setActiveCategory] = useState('All Services');
 
   const filteredData = DATASET.filter(item => {
-    const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase()) || item.category.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = activeCategory === 'All Items' || item.category === activeCategory;
+    const matchesSearch = item.title.toLowerCase().includes(search.toLowerCase()) || item.category.toLowerCase().includes(search.toLowerCase());
+    const matchesCategory = activeCategory === 'All Services' || item.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
 
   return (
-    <div className="min-h-screen bg-[#0b0c10] text-[#f0f2f5] font-sans antialiased flex flex-col selection:bg-purple-500/30">
+    <div className="min-h-screen bg-[#0a0b10] text-[#e4e6eb] font-sans antialiased flex flex-col">
       
-      {/* SPOTIFY STYLE STICKY HEADER */}
-      <nav className="sticky top-0 z-50 bg-[#0b0c10]/95 backdrop-blur-md h-16 flex items-center justify-between px-6 border-b border-white/[0.03]">
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-purple-500 shadow-[0_0_12px_#a855f7]"></div>
-          <span className="text-sm font-black tracking-widest text-white font-mono">
-            PROJECT_ATLAS // <span className="text-purple-400 font-bold">SHOP</span>
+      {/* FIVERR-INSPIRED DARK TOP NAVIGATION HEADER */}
+      <nav className="sticky top-0 z-50 bg-[#0a0b10] border-b border-neutral-800/80 h-16 flex items-center justify-between px-6">
+        <div className="flex items-center gap-6">
+          <span className="text-xl font-black tracking-tight text-white select-none">
+            stackerr<span className="text-emerald-500">.</span>
+          </span>
+          {/* Sub-menu text options from image_aefe44.jpg perspective */}
+          <span className="text-xs text-neutral-400 font-medium hidden xl:inline-block border-l border-neutral-800 pl-6">
+            Explore AI Core Matrix
           </span>
         </div>
 
-        {/* CONSUMER SEARCH BAR */}
-        <div className="flex flex-1 max-w-md mx-6">
-          <div className="flex w-full bg-[#161822] border border-white/[0.05] rounded-full px-4 py-2 focus-within:border-purple-500/50 transition-all">
+        {/* FIVERR VERBATIM SEARCH INPUT BAR PLACEHOLDER */}
+        <div className="flex flex-1 max-w-xl mx-8">
+          <div className="flex w-full bg-[#141622] border border-neutral-800 rounded px-4 py-2 focus-within:border-emerald-500 transition-all">
             <input
               type="text"
-              placeholder="What stack are you looking for today?..."
+              placeholder="What service or stack are you looking for today?..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full bg-transparent text-xs text-white placeholder-neutral-500 focus:outline-none"
@@ -47,126 +50,110 @@ export default function Home() {
           </div>
         </div>
 
-        {/* FORTNITE SHOP PREMIUM SLOT CALL-TO-ACTION */}
-        <div>
+        <div className="flex items-center gap-4">
+          <span className="text-xs font-semibold text-neutral-400 hover:text-white cursor-pointer transition-colors hidden md:inline-block">
+            Become a Seller
+          </span>
           <button 
-            onClick={() => alert('Opening Secure Sponsorship Vault...')}
-            className="relative px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white overflow-hidden group bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] transition-all duration-300 hover:scale-105 active:scale-95"
+            onClick={() => alert('Launching Stripe Checkout Subsystem...')}
+            className="border border-emerald-500 hover:bg-emerald-500 hover:text-black text-emerald-400 font-bold text-xs px-4 py-2 rounded transition-all active:scale-95"
           >
-            <span className="relative z-10">+ Submit Your Tool ($15)</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            Join / Post Gig ($15)
           </button>
         </div>
       </nav>
 
-      {/* SHOP MAIN LAYOUT CONTAINER */}
-      <div className="flex flex-1">
+      {/* HORIZONTAL FIVERR-STYLE SUB-NAV SUB-CATEGORIES BAR */}
+      <div className="bg-[#0e1017] border-b border-neutral-900 px-6 py-2.5 flex gap-6 overflow-x-auto text-xs text-neutral-400 font-medium scrollbar-none select-none">
+        {CATEGORIES.map((cat) => (
+          <span
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`cursor-pointer whitespace-nowrap transition-colors pb-0.5 ${
+              activeCategory === cat ? 'text-emerald-400 border-b-2 border-emerald-400 font-bold' : 'hover:text-white'
+            }`}
+          >
+            {cat}
+          </span>
+        ))}
+      </div>
+
+      {/* DASHBOARD HERO LAYOUT SECTION */}
+      <main className="max-w-7xl w-full mx-auto p-6 md:p-8 flex flex-col gap-6">
         
-        {/* LEFTSIDE MINI NAVIGATION BAR */}
-        <aside className="w-60 bg-[#0b0c10] p-4 hidden lg:flex flex-col gap-1 border-r border-white/[0.02] text-sm">
-          <div className="text-neutral-500 font-bold text-[10px] px-3 uppercase tracking-widest mb-3">Discover</div>
-          <div className="bg-white/[0.04] text-white px-3 py-2 rounded-xl font-bold cursor-pointer transition-all border border-white/[0.05]">✨ Featured Offers</div>
-          <div className="text-neutral-400 px-3 py-2 rounded-xl hover:bg-white/[0.02] cursor-pointer transition-colors mt-1">🚀 Highly Voted</div>
-          <div className="text-neutral-400 px-3 py-2 rounded-xl hover:bg-white/[0.02] cursor-pointer transition-colors mt-1">🕒 Vault Archives</div>
-        </aside>
+        <div>
+          <h1 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+            Pick up where you left off
+          </h1>
+          <p className="text-xs text-neutral-400 mt-1">
+            Hand-vetted automation nodes and structural engineering blueprints for creators.
+          </p>
+        </div>
 
-        {/* CONTENT ROW */}
-        <main className="flex-1 p-6 md:p-8 bg-gradient-to-b from-[#111219] to-[#0b0c10]">
-          
-          {/* HORIZONTAL CAPSULE PILLS (Fortnite / Spotify Tag Matrix) */}
-          <div className="flex gap-2 overflow-x-auto pb-4 mb-8 border-b border-white/[0.04]">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-200 ${
-                  activeCategory === cat 
-                    ? 'bg-white text-black scale-105 shadow-md shadow-white/10' 
-                    : 'bg-[#1c1e27] text-neutral-300 hover:bg-[#282a36] hover:text-white'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* EYE-POPPING MARKETPLACE GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-            {filteredData.map((item) => (
-              <div 
-                key={item.id} 
-                className={`group relative bg-[#151722] rounded-2xl border transition-all duration-300 hover:-translate-y-1 overflow-hidden ${
-                  item.featured 
-                    ? 'border-purple-500 shadow-[0_0_25px_rgba(168,85,247,0.15)] ring-1 ring-purple-500/50' 
-                    : 'border-white/[0.04] hover:border-white/[0.12] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
-                }`}
-              >
-                
-                {/* HIGH-IMPACT THUMBNAIL DISPLAY CARD CONTAINER */}
-                <div className={`w-full aspect-[16/10] bg-gradient-to-br ${item.bgGradient} flex flex-col justify-between p-4 relative overflow-hidden group-hover:brightness-110 transition-all`}>
-                  
-                  {/* CARD TOP DECORATORS */}
-                  <div className="flex justify-between items-center z-10">
-                    <span className="bg-black/60 backdrop-blur-md text-[10px] text-white font-black uppercase tracking-widest px-2 py-0.5 rounded-full border border-white/[0.1]">
-                      {item.status}
-                    </span>
-                    {item.featured && (
-                      <span className="bg-yellow-400 text-black text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded shadow-md animate-pulse">
-                        EPIC OFFER
-                      </span>
-                    )}
-                  </div>
-
-                  {/* VISUAL CENTER BANNER TEXT */}
-                  <div className="z-10 text-center transform group-hover:scale-105 transition-transform duration-300">
-                    <h2 className="text-white text-xl font-black uppercase tracking-tighter drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]">
-                      {item.category}
-                    </h2>
-                    <span className="text-[10px] text-white/70 font-mono tracking-widest uppercase block mt-1">
-                      [ NODE_ACTIVE_STK ]
-                    </span>
-                  </div>
-
-                  {/* BOTTOM DECORATOR BLOCK */}
-                  <div className="z-10 flex justify-between items-center font-mono text-[10px] text-white/90 drop-shadow-sm">
-                    <span>⚡ INITIALIZE</span>
-                    <span>v2.44</span>
-                  </div>
-
-                  {/* Card overlay shine filter */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+        {/* FIVERR-FORMATTED FLEX GIG GRID MATRIX */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-8">
+          {filteredData.map((item) => (
+            <div 
+              key={item.id} 
+              className="group bg-[#121420] border border-neutral-900 hover:border-neutral-800 rounded-lg overflow-hidden flex flex-col justify-between transition-all duration-200"
+            >
+              
+              {/* CARD MEDIA DISPLAY THUMBNAIL */}
+              <div className="w-full aspect-[16/10] relative overflow-hidden bg-neutral-900 shrink-0">
+                <div className={`w-full h-full bg-gradient-to-tr ${item.imgGradient} opacity-60 group-hover:opacity-80 transition-opacity flex items-center justify-center p-4`}>
+                  <span className="text-white font-mono text-[10px] tracking-widest uppercase bg-black/40 px-2 py-1 rounded border border-white/5">
+                    {item.category}
+                  </span>
                 </div>
+                {item.featured && (
+                  <span className="absolute top-2 left-2 bg-emerald-500 text-black font-black text-[9px] tracking-wider uppercase px-2 py-0.5 rounded shadow">
+                    PRO CHOICE
+                  </span>
+                )}
+              </div>
 
-                {/* USER-FRIENDLY METADATA BLOCK */}
-                <div className="p-4 flex gap-3 items-start bg-[#151722]">
-                  
-                  {/* Dynamic Circular Creator Profile Initial Icon */}
-                  <div className="w-10 h-10 rounded-xl bg-[#202334] border border-white/[0.08] flex items-center justify-center font-black text-sm text-purple-400 shrink-0 shadow-inner">
+              {/* CARD CORE BODY DATA */}
+              <div className="p-3 flex flex-col gap-2 flex-1 justify-between">
+                
+                {/* SELLER METADATA CONTAINER */}
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[10px] font-bold text-neutral-300">
                     {item.curator.charAt(0)}
                   </div>
-                  
-                  {/* Primary text descriptions */}
-                  <div className="flex flex-col min-w-0 flex-1">
-                    <h3 className="text-sm font-black text-white tracking-tight truncate group-hover:text-purple-400 transition-colors leading-tight">
-                      {item.name}
-                    </h3>
-                    <p className="text-xs text-neutral-400 mt-1 flex items-center gap-1 font-medium">
-                      by <span className="text-neutral-300 underline decoration-purple-500/50 hover:text-white transition-colors cursor-pointer">{item.curator}</span>
-                    </p>
-                    <div className="flex items-center justify-between mt-3 pt-2 border-t border-white/[0.03] text-[11px] text-neutral-500 font-mono">
-                      <span>👁️ {item.views}</span>
-                      <span className="text-purple-400 font-bold uppercase tracking-wider text-[10px]">Inspect ➔</span>
-                    </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-white leading-none hover:underline cursor-pointer">{item.curator}</span>
+                    <span className="text-[10px] text-neutral-500 font-medium mt-0.5">{item.badge}</span>
                   </div>
+                </div>
 
+                {/* ACTIONABLE SERVICE GIG TITLE */}
+                <p className="text-xs text-neutral-300 font-normal leading-normal line-clamp-2 group-hover:text-emerald-400 transition-colors cursor-pointer">
+                  {item.title}
+                </p>
+
+                {/* TRUST STAR RATINGS AND REVIEW COUNTS */}
+                <div className="flex items-center gap-1 text-xs text-amber-500 font-bold mt-1">
+                  <span>★</span>
+                  <span>{item.rating}</span>
+                  <span className="text-neutral-500 font-normal text-[11px]">({item.reviews})</span>
+                </div>
+
+                {/* FOOTER CONTAINER: PRICING METRIC */}
+                <div className="border-t border-neutral-900 mt-2 pt-2.5 flex items-center justify-between font-mono text-[11px]">
+                  <span className="text-neutral-500 uppercase tracking-widest text-[9px]">PLAN</span>
+                  <div className="text-right">
+                    <span className="text-neutral-500 text-[10px] block font-sans font-medium leading-none">From</span>
+                    <span className="text-white font-bold text-xs block mt-0.5">{item.price}</span>
+                  </div>
                 </div>
 
               </div>
-            ))}
-          </div>
 
-        </main>
-      </div>
+            </div>
+          ))}
+        </div>
+
+      </main>
     </div>
   )
 }
