@@ -2,15 +2,15 @@
 import { useState } from 'react';
 
 const DATASET = [
-  { id: 1, title: "Automated Roof Damage Analysis & Drone Inspection Engine", category: "Property AI", curator: "RoofAI Labs", rating: "5.0", reviews: 1420, price: "$49/mo", badge: "Best Seller", img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&auto=format&fit=crop&q=60", section: "vision" },
-  { id: 2, title: "Context-Aware Neural Code Autocomplete & Repository Refactoring", category: "Development", curator: "CursorForge", rating: "4.9", reviews: 3102, price: "$20/mo", badge: "Trending", img: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=500&auto=format&fit=crop&q=60", section: "text" },
-  { id: 3, title: "Multi-Source Lead Enrichment Matrix & B2B Pipeline Scraper", category: "Lead Gen", curator: "ClayScale", rating: "5.0", reviews: 984, price: "$149/mo", badge: "Top Rated", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=60", section: "data" },
-  { id: 4, title: "Autonomous Real Estate Assessment & Commercial Property Valuation", category: "Property AI", curator: "SiteInspect", rating: "4.8", reviews: 755, price: "$89/mo", badge: "New", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&auto=format&fit=crop&q=60", section: "vision" },
-  { id: 5, title: "Zero-Cost Next.js React Element Engine & Tailwind Builder", category: "Development", curator: "v0 OpenLabs", rating: "4.9", reviews: 843, price: "FREE TIER", badge: "Popular", img: "https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=500&auto=format&fit=crop&q=60", section: "automation" },
-  { id: 6, title: "Open-Source Relational Postgres Storage System & Edge Sync", category: "Database", curator: "SupaBase OSS", rating: "4.8", reviews: 612, price: "FREE TIER", badge: "Verified", img: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=500&auto=format&fit=crop&q=60", section: "data" },
-  { id: 7, title: "No-Code Workflow Node Integration & API Webhook Proxy", category: "Automation", curator: "MakeFree", rating: "4.7", reviews: 219, price: "FREE TIER", badge: "Starter", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=60", section: "automation" },
-  { id: 8, title: "Full Scale Outbound Engine (Clay Matrix + Make Workflows + Phantom Scraping)", category: "Bundles", curator: "EnterpriseOps", rating: "5.0", reviews: 112, price: "$199/mo", badge: "Value Bundle", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60", section: "bundle" },
-  { id: 9, title: "Complete Dev Environment (Cursor Subsystem + Supabase Cluster + v0 Engine)", category: "Bundles", curator: "DevStack Corp", rating: "4.9", reviews: 94, price: "$35/mo", badge: "Hot Pack", img: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=500&auto=format&fit=crop&q=60", section: "bundle" },
+  { id: 1, title: "Automated Roof Damage Analysis & Drone Inspection Engine", category: "Property AI", curator: "RoofAI Labs", rating: "5.0", reviews: 1420, price: "$49/mo", badge: "Best Seller", img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&auto=format&fit=crop&q=60", section: "vision", simulationResponse: "Roof drone flight path verified. Analyzing high-resolution thermal images for structural fracture points... 0 defects found." },
+  { id: 2, title: "Context-Aware Neural Code Autocomplete & Repository Refactoring", category: "Development", curator: "CursorForge", rating: "4.9", reviews: 3102, price: "$20/mo", badge: "Trending", img: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=500&auto=format&fit=crop&q=60", section: "text", simulationResponse: "Refactoring targets identified. Suggesting optimized async stack: \n```javascript\nconst data = await cluster.fetch();\n```" },
+  { id: 3, title: "Multi-Source Lead Enrichment Matrix & B2B Pipeline Scraper", category: "Lead Gen", curator: "ClayScale", rating: "5.0", reviews: 984, price: "$149/mo", badge: "Top Rated", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=60", section: "data", simulationResponse: "Scraping target domains initialized. Compiling phone numbers, LinkedIn URLs, and technology stack matrices into CSV format." },
+  { id: 4, title: "Autonomous Real Estate Assessment & Commercial Property Valuation", category: "Property AI", curator: "SiteInspect", rating: "4.8", reviews: 755, price: "$89/mo", badge: "New", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&auto=format&fit=crop&q=60", section: "vision", simulationResponse: "Commercial zoning data aggregated. Estimating cash-on-cash return curves based on regional market pricing indexes." },
+  { id: 5, title: "Zero-Cost Next.js React Element Engine & Tailwind Builder", category: "Development", curator: "v0 OpenLabs", rating: "4.9", reviews: 843, price: "FREE TIER", badge: "Popular", img: "https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=500&auto=format&fit=crop&q=60", section: "automation", simulationResponse: "Tailwind interface configuration mapped. Component boilerplate generated successfully for active view viewport canvas." },
+  { id: 6, title: "Open-Source Relational Postgres Storage System & Edge Sync", category: "Database", curator: "SupaBase OSS", rating: "4.8", reviews: 612, price: "FREE TIER", badge: "Verified", img: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=500&auto=format&fit=crop&q=60", section: "data", simulationResponse: "PostgreSQL transaction pool synchronized. Row-level security checks verified against schema specifications." },
+  { id: 7, title: "No-Code Workflow Node Integration & API Webhook Proxy", category: "Automation", curator: "MakeFree", rating: "4.7", reviews: 219, price: "FREE TIER", badge: "Starter", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=60", section: "automation", simulationResponse: "Webhook listener triggered. Forwarding multi-payload JSON objects to connected webhook destination endpoints." },
+  { id: 8, title: "Full Scale Outbound Engine (Clay Matrix + Make Workflows + Phantom Scraping)", category: "Bundles", curator: "EnterpriseOps", rating: "5.0", reviews: 112, price: "$199/mo", badge: "Value Bundle", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60", section: "bundle", simulationResponse: "Full Outbound sequence active: Scraping arrays -> Parsing lead names -> Triggering secondary sequences inside active workflows." },
+  { id: 9, title: "Complete Dev Environment (Cursor Subsystem + Supabase Cluster + v0 Engine)", category: "Bundles", curator: "DevStack Corp", rating: "4.9", reviews: 94, price: "$35/mo", badge: "Hot Pack", img: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=500&auto=format&fit=crop&q=60", section: "bundle", simulationResponse: "Dev Stack combined initialization: Syncing Next.js frontend rendering engine directly with continuous Postgres storage." },
 ];
 
 export default function Home() {
@@ -20,9 +20,8 @@ export default function Home() {
   const [selectedDashboardModelId, setSelectedDashboardModelId] = useState(1);
   const [showModelSwitcher, setShowModelSwitcher] = useState(false);
   const [isGroupChat, setIsGroupChat] = useState(true);
-  const [activeModal, setActiveModal] = useState(null); // 'signin' | 'signup' | 'creator' | null
+  const [activeModal, setActiveModal] = useState(null); 
   
-  // FORM FIELDS FOR RECONFIGURED FRIENDLY SIGNIN/SIGNUP
   const [authEmail, setAuthEmail] = useState('');
   const [authPassword, setAuthPassword] = useState('');
   const [authName, setAuthName] = useState('');
@@ -48,7 +47,20 @@ export default function Home() {
     }
   };
 
-  // BROADCAST MESSAGE SUBMIT METHOD
+  // NEW METHOD: REMOVE A NODE DIRECTLY FROM ACTIVE SUBSCRIPTION WORKSPACE
+  const removeModelFromWorkspace = (id, e) => {
+    e.stopPropagation();
+    const remaining = ownedModelIds.filter(item => item !== id);
+    setOwnedModelIds(remaining);
+    
+    // Automatically switch active selection fallback if current selected one is deleted
+    if (selectedDashboardModelId === id && remaining.length > 0) {
+      setSelectedDashboardModelId(remaining[0]);
+    }
+    setShowModelSwitcher(false);
+  };
+
+  // ADVANCED: CHAT WITH DYNAMIC RESPONSE MATCHING VECTOR FOR EACH API INSTANCE
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (!chatInput.trim()) return;
@@ -60,23 +72,25 @@ export default function Home() {
 
     setTimeout(() => {
       if (isGroupChat) {
+        // Broad cluster prompt gets custom responses from all owned active layers combined
         const activeModels = DATASET.filter(m => ownedModelIds.includes(m.id));
         const responses = activeModels.map(m => ({
           sender: m.curator,
-          text: `Pipeline directive received. Syncing token parameters live with Stackerr orchestration proxy network.`,
+          text: m.simulationResponse || `Parameters ingested. Staging runtime logs successfully.`,
           type: "agent"
         }));
         setDiscussionMessages(prev => [...prev, ...responses]);
       } else {
+        // Isolated prompt responses match the single target selected module
         const currentModel = DATASET.find(m => m.id === selectedDashboardModelId);
         setDiscussionMessages(prev => [...prev, {
           sender: currentModel ? currentModel.curator : "AI Engine",
-          text: `Isolated workflow endpoint linked successfully. Commands pushed to runtime sandbox.`,
+          text: currentModel ? currentModel.simulationResponse : `Workflow endpoint connection pipeline active.`,
           type: "agent"
         }]);
       }
       setIsProcessing(false);
-    }, 600);
+    }, 650);
   };
 
   const handleAuthSubmit = (e) => {
@@ -91,7 +105,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#0d0e10] text-[#f4f5f7] font-sans antialiased flex flex-col h-screen overflow-hidden relative">
       
-      {/* BRAND HEADER BAR */}
+      {/* BRAND NAVIGATION HEADER */}
       <nav className="bg-[#111215] border-b border-white/[0.05] h-16 flex items-center justify-between px-6 shrink-0 z-20">
         <div className="flex items-center">
           <span className="text-2xl font-black text-white tracking-tight cursor-pointer select-none" onClick={() => setCurrentView('all')}>
@@ -107,10 +121,7 @@ export default function Home() {
             My Workspace ({ownedModelIds.length})
           </button>
           
-          <button 
-            onClick={() => setActiveModal('creator')}
-            className="border border-[#1dbf73] text-[#1dbf73] hover:bg-[#1dbf73] hover:text-white font-bold text-xs px-4 py-2 rounded-lg transition-all"
-          >
+          <button onClick={() => setActiveModal('creator')} className="border border-[#1dbf73] text-[#1dbf73] hover:bg-[#1dbf73] hover:text-white font-bold text-xs px-4 py-2 rounded-lg transition-all">
             Join as Creator
           </button>
 
@@ -127,10 +138,10 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* CORE WORKSPACE CONTENT AND LAYOUT */}
+      {/* CORE FRAMEWORK WORKSPACE SPLIT */}
       <div className="flex flex-1 overflow-hidden w-full">
         
-        {/* SIDE NAVIGATION BAR */}
+        {/* SIDE BAR TAXONOMY BAR */}
         <aside className="w-56 bg-[#111215] border-r border-white/[0.02] p-3 flex flex-col justify-between shrink-0 select-none z-10">
           <div className="flex flex-col gap-1 overflow-y-auto max-h-full pr-1 scrollbar-none">
             
@@ -175,11 +186,11 @@ export default function Home() {
           </div>
         </aside>
 
-        {/* CORE GRID ARCHITECTURE VIEWER */}
+        {/* CORE GRID MATRIX WORKSPACE SECTION */}
         <main className="flex-1 h-full overflow-hidden bg-[#0d0e10] w-full">
           
           {currentView !== 'dashboard' ? (
-            /* PLATFORM DISCOVERY VIEW */
+            /* PLATFORM CATALOG OVERVIEW MARKETPLACE */
             <div className="h-full overflow-y-auto p-6 md:p-8 flex flex-col gap-8 w-full">
               
               <div className="bg-gradient-to-r from-[#421d2a] via-[#2d1b2c] to-[#14151b] border border-white/[0.04] rounded-2xl p-8 relative overflow-hidden shadow-xl shrink-0 w-full">
@@ -257,78 +268,105 @@ export default function Home() {
 
             </div>
           ) : (
-            /* FIX: RE-ENABLED COMPREHENSIVE TEXT/TYPING DASHBOARD PIPELINE */
+            /* CONSOLE CONTROL PANEL WORKSPACE MODE */
             <div className="h-full flex flex-col justify-between relative max-w-5xl mx-auto px-6 w-full">
+              
               <div className="pt-6 pb-3 border-b border-white/[0.05] bg-[#0d0e10] z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <h2 className="text-base font-bold text-white tracking-tight">Unified Engine Operations Panel</h2>
                   <p className="text-xs text-neutral-500">Coordinate and cross-talk active AI assets tied to your profile subscription cluster parameters.</p>
                 </div>
 
-                <div className="flex items-center gap-3 self-end sm:self-auto">
-                  <div className="bg-[#17181c] border border-white/[0.05] p-0.5 rounded-lg flex shadow-inner">
-                    <button onClick={() => setIsGroupChat(true)} className={`text-[10px] font-bold px-3 py-1.5 rounded-md transition-all ${isGroupChat ? 'bg-[#2d2e34] text-white' : 'text-neutral-400'}`}>
-                      Cross-Channel Cluster
-                    </button>
-                    <button onClick={() => setIsGroupChat(false)} className={`text-[10px] font-bold px-3 py-1.5 rounded-md transition-all ${!isGroupChat ? 'bg-[#2d2e34] text-white' : 'text-neutral-400'}`}>
-                      Isolated Interface Link
-                    </button>
-                  </div>
-
-                  {!isGroupChat && (
-                    <div className="relative">
-                      <button onClick={() => setShowModelSwitcher(!showModelSwitcher)} className="bg-[#17181c] border border-white/[0.05] rounded-lg px-3 py-1.5 text-xs font-semibold text-neutral-300 flex items-center gap-2">
-                        <span>{DATASET.find(m => m.id === selectedDashboardModelId)?.curator || "Select Agent"}</span>
-                        <span className="text-neutral-500 text-[10px]">▼</span>
+                {ownedModelIds.length > 0 && (
+                  <div className="flex items-center gap-3 self-end sm:self-auto">
+                    <div className="bg-[#17181c] border border-white/[0.05] p-0.5 rounded-lg flex shadow-inner">
+                      <button onClick={() => setIsGroupChat(true)} className={`text-[10px] font-bold px-3 py-1.5 rounded-md transition-all ${isGroupChat ? 'bg-[#2d2e34] text-white' : 'text-neutral-400'}`}>
+                        Cross-Channel Cluster
                       </button>
-                      {showModelSwitcher && (
-                        <div className="absolute right-0 top-full mt-1 w-56 bg-[#17181c] border border-white/[0.08] rounded-lg shadow-2xl z-30 overflow-hidden max-h-48 overflow-y-auto">
-                          {DATASET.filter(m => ownedModelIds.includes(m.id)).map(model => (
-                            <div key={model.id} onClick={() => { setSelectedDashboardModelId(model.id); setShowModelSwitcher(false); }} className="p-2.5 text-xs cursor-pointer text-neutral-300 hover:bg-[#2d2e34]">
-                              {model.curator} Node
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                      <button onClick={() => setIsGroupChat(false)} className={`text-[10px] font-bold px-3 py-1.5 rounded-md transition-all ${!isGroupChat ? 'bg-[#2d2e34] text-white' : 'text-neutral-400'}`}>
+                        Isolated Interface Link
+                      </button>
                     </div>
-                  )}
-                </div>
-              </div>
 
-              {/* LIVE LOG TIMELINE DISPLAY */}
-              <div className="flex-1 overflow-y-auto py-6 flex flex-col gap-4 pr-2 scrollbar-none">
-                {discussionMessages.map((msg, idx) => (
-                  <div key={idx} className="max-w-4xl flex flex-col gap-1 bg-[#17181c]/40 border border-white/[0.02] p-4 rounded-xl">
-                    <span className={`text-[11px] font-bold uppercase tracking-wider ${msg.type === 'user' ? 'text-blue-400' : msg.type === 'system' ? 'text-purple-400' : 'text-[#1dbf73]'}`}>
-                      {msg.sender}
-                    </span>
-                    <p className="text-sm text-neutral-200 mt-0.5">{msg.text}</p>
+                    {!isGroupChat && (
+                      <div className="relative">
+                        <button onClick={() => setShowModelSwitcher(!showModelSwitcher)} className="bg-[#17181c] border border-white/[0.05] rounded-lg px-3 py-1.5 text-xs font-semibold text-neutral-300 flex items-center gap-2 hover:text-white transition-colors">
+                          <span>{DATASET.find(m => m.id === selectedDashboardModelId)?.curator || "Select Agent"}</span>
+                          <span className="text-neutral-500 text-[10px]">▼</span>
+                        </button>
+                        {showModelSwitcher && (
+                          <div className="absolute right-0 top-full mt-1 w-64 bg-[#17181c] border border-white/[0.08] rounded-xl shadow-2xl z-30 overflow-hidden max-h-64 overflow-y-auto p-1 flex flex-col gap-0.5">
+                            {DATASET.filter(m => ownedModelIds.includes(m.id)).map(model => (
+                              <div 
+                                key={model.id} 
+                                onClick={() => { setSelectedDashboardModelId(model.id); setShowModelSwitcher(false); }} 
+                                className="p-2 text-xs cursor-pointer text-neutral-300 hover:bg-[#2d2e34] rounded-lg flex items-center justify-between group/item"
+                              >
+                                <span className="truncate">{model.curator} Node</span>
+                                <button 
+                                  onClick={(e) => removeModelFromWorkspace(model.id, e)} 
+                                  className="text-[10px] text-red-400/60 hover:text-red-400 bg-red-500/10 px-2 py-0.5 rounded opacity-0 group-hover/item:opacity-100 transition-all"
+                                >
+                                  Revoke
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
-                ))}
-                {isProcessing && <div className="text-xs text-neutral-400 font-bold animate-pulse px-4">Processing concurrent cluster logs...</div>}
+                )}
               </div>
 
-              {/* CHAT INPUT CONTAINER FOR BROADCASTS */}
-              <div className="pb-8 pt-2 bg-[#0d0e10]">
-                <form onSubmit={handleSendMessage} className="relative max-w-4xl mx-auto flex items-center bg-[#17181c] rounded-full border border-white/[0.04]">
-                  <input 
-                    type="text" 
-                    placeholder={isGroupChat ? "Broadcast system directive to all active workspace layers..." : "Direct prompt connection link..."}
-                    value={chatInput}
-                    onChange={(e) => setChatInput(e.target.value)}
-                    className="w-full bg-transparent text-xs text-white placeholder-neutral-500 px-6 py-4 focus:outline-none"
-                  />
-                  <button type="submit" className="absolute right-3 bg-[#1dbf73] text-black text-xs font-extrabold px-5 py-2 rounded-full hover:bg-[#19a763] transition-colors">
-                    Broadcast
-                  </button>
-                </form>
+              {/* LOG TIMELINE RUNTIME MESSAGES */}
+              <div className="flex-1 overflow-y-auto py-6 flex flex-col gap-4 pr-2 scrollbar-none">
+                {ownedModelIds.length === 0 ? (
+                  /* SLEEK NEW EMPTY WORKSPACE STATE HANDLER */
+                  <div className="flex-1 flex flex-col items-center justify-center text-center p-8 border border-dashed border-white/[0.05] rounded-2xl my-4 bg-[#17181c]/10">
+                    <span className="text-3xl mb-2">📥</span>
+                    <h4 className="text-sm font-bold text-white">Your System Cluster is Empty</h4>
+                    <p className="text-xs text-neutral-500 max-w-xs mt-1 mb-4">You have revoked access to all specialized endpoints. Order nodes from the explorer pool to coordinate actions.</p>
+                    <button onClick={() => setCurrentView('all')} className="bg-[#1dbf73] text-black text-xs font-bold px-4 py-2 rounded-lg hover:bg-[#19a763] transition-all">
+                      Browse Marketplace Systems
+                    </button>
+                  </div>
+                ) : (
+                  discussionMessages.map((msg, idx) => (
+                    <div key={idx} className="max-w-4xl flex flex-col gap-1 bg-[#17181c]/40 border border-white/[0.02] p-4 rounded-xl whitespace-pre-wrap">
+                      <span className={`text-[11px] font-bold uppercase tracking-wider ${msg.type === 'user' ? 'text-blue-400' : msg.type === 'system' ? 'text-purple-400' : 'text-[#1dbf73]'}`}>
+                        {msg.sender}
+                      </span>
+                      <p className="text-sm text-neutral-200 mt-0.5">{msg.text}</p>
+                    </div>
+                  ))
+                )}
+                {isProcessing && <div className="text-xs text-neutral-400 font-bold animate-pulse px-4">Processing concurrent cluster tokens...</div>}
               </div>
+
+              {/* USER TYPING ELEMENT COMPONENT FOOTER */}
+              {ownedModelIds.length > 0 && (
+                <div className="pb-8 pt-2 bg-[#0d0e10]">
+                  <form onSubmit={handleSendMessage} className="relative max-w-4xl mx-auto flex items-center bg-[#17181c] rounded-full border border-white/[0.04] focus-within:border-emerald-500/50 transition-colors">
+                    <input 
+                      type="text" 
+                      placeholder={isGroupChat ? "Broadcast system directive to all active workspace layers..." : `Direct prompt pipeline to ${DATASET.find(m => m.id === selectedDashboardModelId)?.curator}...`}
+                      value={chatInput}
+                      onChange={(e) => setChatInput(e.target.value)}
+                      className="w-full bg-transparent text-xs text-white placeholder-neutral-500 px-6 py-4 focus:outline-none"
+                    />
+                    <button type="submit" className="absolute right-3 bg-[#1dbf73] text-black text-xs font-extrabold px-5 py-2 rounded-full hover:bg-[#19a763] transition-colors">
+                      Broadcast
+                    </button>
+                  </form>
+                </div>
+              )}
             </div>
           )}
         </main>
       </div>
 
-      {/* NEW UPGRADED PREMIUM FRIENDLY AUTHENTICATION OVERLAYS */}
+      {/* UPGRADED PREMIUM FRIENDLY OVERLAYS */}
       {activeModal && (
         <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4">
           <div className="bg-[#17181c] border border-white/[0.08] rounded-2xl max-w-sm w-full p-8 relative shadow-2xl transition-all">
