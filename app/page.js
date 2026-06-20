@@ -154,6 +154,12 @@ const COLLECTIONS = [
   { id: "toprated", title: "Top Rated by the Community", icon: "star", accent: "bg-amber-500 text-black", test: (i) => parseFloat(i.rating) >= 4.9 },
 ];
 
+const STACKS = [
+  { id: "dev-creator", title: "Full Dev Creator Stack", members: [2, 5, 6], blurb: "Code, prototype UI, and store data without leaving one workflow." },
+  { id: "outbound-growth", title: "Outbound Growth Stack", members: [3, 7], blurb: "Scrape and enrich leads, then push them straight into automated outreach." },
+  { id: "property-ops", title: "Property Ops Stack", members: [1, 4], blurb: "Inspect roofs by drone and value the property in the same pass." },
+];
+
 const NEWS_FEED = [
   { date: "Jun 18, 2026", text: "ClayScale shipped a v4 scraper cluster — lead enrichment latency dropped ~30%." },
   { date: "Jun 12, 2026", text: "SupaBase OSS now offers free-tier projects up to 500MB out of the box." },
